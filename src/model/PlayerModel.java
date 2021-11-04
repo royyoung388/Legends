@@ -1,17 +1,17 @@
+package model;
+
 import bean.Armor;
+import bean.Backpack;
 import bean.Hero;
 import bean.Weapon;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class Character {
+public class PlayerModel {
     private Hero hero;
     private Backpack backpack;
     private Weapon weapon;
     private Armor armor;
 
-    public Character(Hero hero) {
+    public PlayerModel(Hero hero) {
         this.hero = hero;
         backpack = new Backpack();
         weapon = null;

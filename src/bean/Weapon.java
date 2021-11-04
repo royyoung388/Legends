@@ -1,9 +1,9 @@
 package bean;
 
-public class Weapon {
-    private final String name;
-    private final int cost;
-    private final int level;
+import interfaces.Attackable;
+import interfaces.Changeable;
+
+public class Weapon extends Item implements Attackable {
     private final int damage;
     private final int hands;
 
@@ -13,23 +13,9 @@ public class Weapon {
     }
 
     public Weapon(String name, int cost, int level, int damage, int hands) {
-        this.name = name;
-        this.cost = cost;
-        this.level = level;
+        super(name, cost, level);
         this.damage = damage;
         this.hands = hands;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getCost() {
-        return cost;
-    }
-
-    public int getLevel() {
-        return level;
     }
 
     public int getDamage() {
@@ -38,5 +24,15 @@ public class Weapon {
 
     public int getHands() {
         return hands;
+    }
+
+    @Override
+    public void attack(Changeable opponent) {
+
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%20s%10d%10d%10d%10d", getName(), getCost(), getLevel(), damage, hands);
     }
 }

@@ -1,22 +1,25 @@
-import bean.Armor;
-import bean.Potion;
-import bean.Spell;
-import bean.Weapon;
+package model;
+
+import bean.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Backpack {
+public class MarketModel {
     private List<Armor> armorList;
     private List<Weapon> weaponList;
     private List<Potion> potionList;
     private List<Spell> spellList;
 
-    public Backpack() {
+    public MarketModel() {
         armorList = new ArrayList<>();
         weaponList = new ArrayList<>();
         potionList = new ArrayList<>();
         spellList = new ArrayList<>();
+    }
+
+    public void init() {
+
     }
 
     public List<Armor> getArmorList() {

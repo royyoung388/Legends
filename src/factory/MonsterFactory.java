@@ -24,7 +24,7 @@ public class MonsterFactory {
         // skip first line
         iterator.next();
         while (iterator.hasNext()) {
-            String[] array = iterator.next().split(" ");
+            String[] array = iterator.next().split("/s");
             monsters.add(new Monster(array));
         }
 

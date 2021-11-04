@@ -1,9 +1,13 @@
+package controller;
+
 import bean.Armor;
 import bean.Potion;
 import bean.Spell;
 import bean.Weapon;
 
-public interface CharacterController {
+public interface PlayerController {
+    void move();
+
     int attack();
 
     void damageDealt(int damage);
@@ -13,6 +17,17 @@ public interface CharacterController {
     void levelUp();
 
     void gainMoney();
+
+    void getMoney();
+
+
+    void buyArmor();
+
+    void buyWeapon();
+
+    void buyPotion();
+
+    void buySpell();
 
 
     void useSpell(Spell spell);

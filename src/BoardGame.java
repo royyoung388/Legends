@@ -1,3 +1,5 @@
+import board.Board;
+
 /**
  * Base class for all game. Defined several general method.
  */

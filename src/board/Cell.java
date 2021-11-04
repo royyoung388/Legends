@@ -1,3 +1,5 @@
+package board;
+
 /**
  * One cell on the board.
  * Memory the mark

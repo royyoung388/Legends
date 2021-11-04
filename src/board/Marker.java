@@ -1,3 +1,5 @@
+package board;
+
 public class Marker {
     private String mark;
 

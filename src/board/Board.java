@@ -1,5 +1,7 @@
+package board;
+
 /***
- * Board, made by cells.
+ * board.Board, made by cells.
  * set the board size, and record the chess mark in the board
  */
 public class Board {

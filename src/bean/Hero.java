@@ -1,7 +1,6 @@
 package bean;
 
-public class Hero {
-    private String name;
+public class Hero extends Character {
     private int mana;
     private int strength;
     private int agility;
@@ -15,17 +14,14 @@ public class Hero {
     }
 
     public Hero(String name, int mana, int strength, int agility, int dexterity, int money, int experience) {
-        this.name = name;
+        // todo
+        super(name, 1, 10, 5, 0, 0);
         this.mana = mana;
         this.strength = strength;
         this.agility = agility;
         this.dexterity = dexterity;
         this.money = money;
         this.experience = experience;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public int getMana() {
@@ -50,5 +46,24 @@ public class Hero {
 
     public int getExperience() {
         return experience;
+    }
+
+    @Override
+    public void change(int attribute, int value) {
+        super.change(attribute, value);
+        switch (attribute) {
+            case MP -> mana += value;
+            case STRENGTH -> strength += value;
+            case AGILITY -> agility += value;
+            case DEXTERITY -> dexterity += value;
+            case MONEY -> money += value;
+            case EXPERIENCE -> experience += value;
+        }
+    }
+
+    @Override
+    public String toString() {
+        //todo
+        return "";
     }
 }
