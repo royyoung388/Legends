@@ -1,4 +1,4 @@
-package board;
+package model;
 
 /**
  * One cell on the board.

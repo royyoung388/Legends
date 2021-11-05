@@ -17,4 +17,8 @@ public class PlayerModel {
         weapon = null;
         armor = null;
     }
+
+    public Hero getHero() {
+        return hero;
+    }
 }

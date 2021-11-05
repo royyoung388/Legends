@@ -18,9 +18,13 @@ public class Armor extends Item implements Equipable {
         return reduction;
     }
 
+    public static String header() {
+        return String.format("%20s%10s%10s%10s", "Name", "Cost", "Level", "Reduction");
+    }
+
     @Override
     public void equip() {
-        
+
     }
 
     @Override

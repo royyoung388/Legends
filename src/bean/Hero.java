@@ -48,6 +48,11 @@ public class Hero extends Character {
         return experience;
     }
 
+    public static String header() {
+        return Character.header()
+                + String.format("%10s%10s%10s%10s%10s%10s", "Mana", "Strength", "Agility", "Dexterity", "Money", "Exp");
+    }
+
     @Override
     public void change(int attribute, int value) {
         super.change(attribute, value);
@@ -63,7 +68,7 @@ public class Hero extends Character {
 
     @Override
     public String toString() {
-        //todo
-        return "";
+        return super.toString()
+                + String.format("%10d%10d%10d%10d%10d%10d", mana, strength, agility, dexterity, money, experience);
     }
 }

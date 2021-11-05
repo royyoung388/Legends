@@ -1,11 +1,10 @@
 package controller;
 
-import bean.Armor;
-import bean.Potion;
-import bean.Spell;
-import bean.Weapon;
+import bean.*;
 
 public interface PlayerController {
+    Hero getHero();
+
     void move();
 
     int attack();
@@ -37,4 +36,8 @@ public interface PlayerController {
     void equipArmor(Armor armor);
 
     void equipWeapon(Weapon weapon);
+
+    void showInformation();
+
+    void showEquipment();
 }

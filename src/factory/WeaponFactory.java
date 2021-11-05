@@ -15,7 +15,7 @@ public class WeaponFactory {
         path = "config/Weaponry.txt";
     }
 
-    public List<Weapon> readAll(String path) throws IOException {
+    public List<Weapon> readAll(String path) {
         List<Weapon> weapons = new ArrayList<>();
 
         Iterator<String> iterator = FileUtils.readFile(path).iterator();

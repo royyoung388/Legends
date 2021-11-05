@@ -17,7 +17,7 @@ public class MonsterFactory {
         spirit = "config/Spirits.txt";
     }
 
-    public List<Monster> readAll(String path) throws IOException {
+    public List<Monster> readAll(String path)  {
         List<Monster> monsters = new ArrayList<>();
 
         Iterator<String> iterator = FileUtils.readFile(path).iterator();

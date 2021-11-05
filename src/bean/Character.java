@@ -27,6 +27,10 @@ public class Character implements Changeable {
         return level;
     }
 
+    public int getHp() {
+        return hp;
+    }
+
     public int getDamage() {
         return damage;
     }
@@ -39,6 +43,10 @@ public class Character implements Changeable {
         return dodge;
     }
 
+    public static String header() {
+        return String.format("%20s%10s%10s%10s%10s%10s", "Name", "HP", "Level", "Damage", "Defense", "Dodge");
+    }
+
     @Override
     public void change(int attribute, int value) {
         switch (attribute) {
@@ -48,5 +56,10 @@ public class Character implements Changeable {
             case DEFENSE -> defense += value;
             case DODGE -> dodge += value;
         }
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%20s%10d%10d%10d%10d%10d", name, hp, level, damage, defense, dodge);
     }
 }

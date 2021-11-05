@@ -7,12 +7,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FileUtils {
-    public static List<String> readFile(String path) throws IOException {
-        List<String> list = new ArrayList<String>();
-        BufferedReader bufferedReader = new BufferedReader(new FileReader(path));
-        String line = null;
-        while ((line = bufferedReader.readLine()) != null) {
-            list.add(line);
+    public static List<String> readFile(String path) {
+        List<String> list = new ArrayList<>();
+
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(path));
+            String line = null;
+            while ((line = bufferedReader.readLine()) != null) {
+                if (!line.isEmpty())
+                    list.add(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return list;
     }

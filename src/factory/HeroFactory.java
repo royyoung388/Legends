@@ -9,7 +9,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class HeroFactory {
-    private String paladin, sorcerer, warrior;
+    public final String paladin, sorcerer, warrior;
 
     public HeroFactory() {
         paladin = "config/Paladins.txt";
@@ -17,14 +17,14 @@ public class HeroFactory {
         warrior = "config/Warriors.txt";
     }
 
-    public List<Hero> readAll(String path) throws IOException {
+    public List<Hero> readAll(String path)  {
         List<Hero> heroes = new ArrayList<>();
 
         Iterator<String> iterator = FileUtils.readFile(path).iterator();
         // skip first line
         iterator.next();
         while (iterator.hasNext()) {
-            String[] array = iterator.next().split(" ");
+            String[] array = iterator.next().split("\s+");
             heroes.add(new Hero(array));
         }
 

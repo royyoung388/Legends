@@ -18,7 +18,7 @@ public class SepllFactory {
         lighting = "config/LightningSpells.txt";
     }
 
-    public List<Spell> readAll(String path) throws IOException {
+    public List<Spell> readAll(String path) {
         List<Spell> spells = new ArrayList<>();
 
         Iterator<String> iterator = FileUtils.readFile(path).iterator();

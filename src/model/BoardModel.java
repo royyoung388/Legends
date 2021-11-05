@@ -1,14 +1,14 @@
-package board;
+package model;
 
 /***
  * board.Board, made by cells.
  * set the board size, and record the chess mark in the board
  */
-public class Board {
+public class BoardModel {
     private final Cell[][] cells;
     private int row, column;
 
-    public Board(int row, int column) {
+    public BoardModel(int row, int column) {
         cells = new Cell[row][column];
         for (int i = 0; i < row; i++)
             for (int j = 0; j < column; j++)
@@ -38,16 +38,16 @@ public class Board {
         }
     }
 
-    public void move(int row, int column, Marker mark) {
+    public void setMarker(int row, int column, Marker mark) {
         cells[row][column].setMark(mark);
+    }
+
+    public Marker getMarker(int row, int column) {
+        return cells[row][column].getMark();
     }
 
     public Cell getCell(int row, int column) {
         return cells[row][column];
-    }
-
-    public Marker getMark(int row, int column) {
-        return getCell(row, column).getMark();
     }
 
     public int getRow() {
