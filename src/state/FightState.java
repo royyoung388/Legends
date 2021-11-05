@@ -6,4 +6,9 @@ public class FightState extends BaseState {
         action = action.toUpperCase();
 
     }
+
+    @Override
+    public void showPrompt(Context context) {
+
+    }
 }

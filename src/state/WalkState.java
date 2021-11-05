@@ -1,6 +1,7 @@
 package state;
 
 import controller.BoardController;
+import font.Font;
 import game.RPGGame;
 import model.Marker;
 import utils.Dice;
@@ -38,6 +39,13 @@ public class WalkState extends BaseState {
                 }
             }
         }
+    }
+
+    @Override
+    public void showPrompt(Context context) {
+        System.out.println(Font.CONTROL);
+        context.getRpgGame().getBoardController().show();
+        System.out.println("\nInput your action:");
     }
 
 }

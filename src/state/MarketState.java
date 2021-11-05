@@ -6,4 +6,9 @@ public class MarketState extends BaseState{
         action = action.toUpperCase();
 
     }
+
+    @Override
+    public void showPrompt(Context context) {
+        System.out.println("market");
+    }
 }

@@ -1,5 +1,7 @@
 package state;
 
 public interface State {
-    public void doAction(Context context, String action);
+    void doAction(Context context, String action);
+
+    void showPrompt(Context context);
 }

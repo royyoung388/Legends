@@ -39,7 +39,7 @@ public class BoardView {
                 // column number
                 System.out.print("    ");
                 for (int k = 0; k < board.getRow(); k++)
-                    System.out.printf("%-3s", k + 1);
+                    System.out.printf("%-4s", k + 1);
                 System.out.println();
                 continue;
             }
@@ -52,13 +52,13 @@ public class BoardView {
                     if (j == -1)
                         System.out.printf("%-3d", (i + 1) / 2);
                     else
-                        System.out.printf("|%-2s", board.getMarker(i / 2, j));
+                        System.out.printf("|%-3s", board.getMarker(i / 2, j));
                 System.out.println("|");
             } else {
                 // even row for split line
                 System.out.print("   ");
                 for (int k = 0; k < board.getRow(); k++)
-                    System.out.print("+--");
+                    System.out.print("+---");
                 System.out.println("+");
             }
         }

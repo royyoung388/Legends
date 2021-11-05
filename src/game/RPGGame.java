@@ -18,7 +18,6 @@ public abstract class RPGGame {
     protected List<PlayerController> playerControllerList;
 
     protected Context context;
-    protected State state;
 
     public RPGGame(int row, int column) {
         boardController = new BoardControllerImpl(new BoardView(), new BoardModel(row, column));
@@ -26,14 +25,6 @@ public abstract class RPGGame {
 
         context = new Context(this);
         initGame();
-    }
-
-    public void listenAction() {
-        Scanner scanner = new Scanner(System.in);
-        while (!isEnd()) {
-            String action = scanner.next();
-            state.doAction(context, String.valueOf(action.strip().toUpperCase().charAt(0)));
-        }
     }
 
     public BoardController getBoardController() {

@@ -102,12 +102,12 @@ public class LegendsGame extends RPGGame {
         do {
             System.out.println("\nInput number to choose your legend: (press Q to stop choosing)");
             id = scanner.next();
-            if (!id.equals("Q") && !id.equals("q")) {
+            if (!id.equals("Q") && !id.equals("q") && Integer.parseInt(id) >= 0 && Integer.parseInt(id) < heroList.size()) {
                 playerControllerList.add(
                         new PlayerControllerImpl(new PlayerView(), new PlayerModel(heroList.get(Integer.parseInt(id)))));
                 showTeam();
             }
-        } while (!id.equals("Q") && !id.equals("q") || playerControllerList.size() == 0 );
+        } while (!id.equals("Q") && !id.equals("q") || playerControllerList.size() == 0);
     }
 
     @Override
@@ -122,14 +122,12 @@ public class LegendsGame extends RPGGame {
         }
 
         chooseHero();
-        state = new WalkState();
+        context.setState(new WalkState());
 
         while (!isEnd()) {
-            System.out.println(Font.CONTROL);
-            boardController.show();
-            System.out.println("\nInput your action:");
+            context.getState().showPrompt(context);
             String action = scanner.next();
-            state.doAction(context, action);
+            context.getState().doAction(context, action);
         }
     }
 
@@ -147,5 +145,4 @@ public class LegendsGame extends RPGGame {
     public void quit() {
 
     }
-
 }
