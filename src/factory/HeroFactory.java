@@ -17,14 +17,14 @@ public class HeroFactory {
         warrior = "config/Warriors.txt";
     }
 
-    public List<Hero> readAll(String path)  {
+    public List<Hero> readAll(String path) {
         List<Hero> heroes = new ArrayList<>();
 
         Iterator<String> iterator = FileUtils.readFile(path).iterator();
         // skip first line
         iterator.next();
         while (iterator.hasNext()) {
-            String[] array = iterator.next().split("\s+");
+            String[] array = iterator.next().split("[\s\t]+");
             heroes.add(new Hero(array));
         }
 

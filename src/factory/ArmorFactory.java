@@ -1,9 +1,9 @@
 package factory;
 
 import bean.Armor;
+import utils.Dice;
 import utils.FileUtils;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -12,7 +12,7 @@ public class ArmorFactory {
     private String path;
 
     public ArmorFactory() {
-        path = "config/items.Armory.txt";
+        path = "config/Armory.txt";
     }
 
     public List<Armor> readAll(String path) {
@@ -22,12 +22,20 @@ public class ArmorFactory {
         // skip first line
         iterator.next();
         while (iterator.hasNext()) {
-            String[] array = iterator.next().split(" ");
+            String[] array = iterator.next().split("[\s\t]+");
             armories.add(new Armor(array));
         }
 
         return armories;
     }
 
-
+    public List<Armor> randomChoose(int count) {
+        List<Armor> all = readAll(path);
+        List<Armor> choice = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            int index = Dice.roll(all.size());
+            choice.add(all.get(index));
+        }
+        return choice;
+    }
 }

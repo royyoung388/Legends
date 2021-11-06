@@ -48,6 +48,10 @@ public class Hero extends Character {
         return experience;
     }
 
+    public void setMoney(int money) {
+        this.money = money;
+    }
+
     public static String header() {
         return Character.header()
                 + String.format("%10s%10s%10s%10s%10s%10s", "Mana", "Strength", "Agility", "Dexterity", "Money", "Exp");

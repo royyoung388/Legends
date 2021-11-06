@@ -31,4 +31,36 @@ public class Backpack {
     public List<Spell> getSpellList() {
         return spellList;
     }
+
+    public void addArmor(Armor armor) {
+        armorList.add(armor);
+    }
+
+    public void addWeapon(Weapon weapon) {
+        weaponList.add(weapon);
+    }
+
+    public void addPotion(Potion potion) {
+        potionList.add(potion);
+    }
+
+    public void addSpell(Spell spell) {
+        spellList.add(spell);
+    }
+
+    public void removeArmor(Armor armor) {
+        armorList.remove(armor);
+    }
+
+    public void removeWeapon(Weapon weapon) {
+        weaponList.remove(weapon);
+    }
+
+    public void removePotion(Potion potion) {
+        potionList.remove(potion);
+    }
+
+    public void removeSpell(Spell spell) {
+        spellList.remove(spell);
+    }
 }

@@ -25,6 +25,10 @@ public class Potion extends Item implements Usable {
         return attribute;
     }
 
+    public static String header() {
+        return String.format("%20s%10s%10s%10s%10s", "Name", "Cost", "Level", "Attribute", "Increase");
+    }
+
     @Override
     public void use(Changeable subject) {
 

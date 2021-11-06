@@ -4,17 +4,18 @@ import interfaces.Castable;
 import interfaces.Changeable;
 
 public class Spell extends Item implements Castable {
-    private static final int ICE = 0;
-    private static final int FIRE = 1;
-    private static final int LIGHTNING = 2;
+    public static final int ICE = 0;
+    public static final int FIRE = 1;
+    public static final int LIGHTNING = 2;
+    private static final String[] TYPE = {"ICE", "FIRE", "LIGHTNING"};
 
     private final int type;
     private final int damage;
     private final int mana;
 
-    public Spell(String[] args) {
-        this(Integer.parseInt(args[0]), args[1], Integer.parseInt(args[2]), Integer.parseInt(args[3]),
-                Integer.parseInt(args[4]), Integer.parseInt(args[5]));
+    public Spell(int type, String[] args) {
+        this(type, args[0], Integer.parseInt(args[1]), Integer.parseInt(args[2]),
+                Integer.parseInt(args[3]), Integer.parseInt(args[4]));
     }
 
     public Spell(int type, String name, int cost, int level, int damage, int mana) {
@@ -36,6 +37,10 @@ public class Spell extends Item implements Castable {
         return mana;
     }
 
+    public static String header() {
+        return String.format("%20s%10s%10s%10s%10s%s", "Name", "Cost", "Level", "Type", "Damage", "ManaCost");
+    }
+
     @Override
     public void cast(Changeable opponent) {
 
@@ -43,6 +48,6 @@ public class Spell extends Item implements Castable {
 
     @Override
     public String toString() {
-        return String.format("%20s%10s%10d%10d%10d", getName(), type, getCost(), getLevel(), damage, mana);
+        return String.format("%20s%10s%10d%10d%10d%10d", getName(), TYPE[type], getCost(), getLevel(), damage, mana);
     }
 }

@@ -1,6 +1,7 @@
 package bean;
 
 import interfaces.Equipable;
+import interfaces.Merchantable;
 
 public class Armor extends Item implements Equipable {
     private final int reduction;

@@ -1,16 +1,16 @@
 package game;
 
 import bean.Hero;
-import controller.PlayerController;
-import controller.PlayerControllerImpl;
+import controller.MarketController;
+import controller.MarketControllerImpl;
 import factory.HeroFactory;
-import font.Font;
 import model.Marker;
-import model.PlayerModel;
+import model.MarketModel;
 import state.WalkState;
+import text.text;
 import utils.Dice;
 import utils.LegendMarker;
-import view.PlayerView;
+import view.MarketView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +19,7 @@ import java.util.concurrent.TimeUnit;
 
 public class LegendsGame extends RPGGame {
     private Scanner scanner;
+    private MarketController marketController;
 
     public LegendsGame() {
         this(8, 8);
@@ -27,6 +28,7 @@ public class LegendsGame extends RPGGame {
     public LegendsGame(int row, int column) {
         super(row, column);
         scanner = new Scanner(System.in);
+        marketController = new MarketControllerImpl(new MarketView(), new MarketModel());
     }
 
     private void initBoard() {
@@ -53,21 +55,10 @@ public class LegendsGame extends RPGGame {
         boardController.fill(markers);
     }
 
-    private void showTeam() {
-        System.out.println("===== Your Team =====");
-        System.out.println("   " + Hero.header());
-        int index = 0;
-        for (PlayerController playerController : playerControllerList) {
-            System.out.printf("%3d%s\n", index, playerController.getHero());
-            index++;
-        }
-        System.out.println("======================\n");
-    }
-
     private void chooseHero() {
         HeroFactory factory = new HeroFactory();
         List<Hero> heroList = new ArrayList<>();
-        int index = 0;
+        int index = 1;
 
         System.out.println("====== PALADIN ======");
         List<Hero> paladin = factory.readAll(factory.paladin);
@@ -80,7 +71,6 @@ public class LegendsGame extends RPGGame {
 
         System.out.println("====== WARRIOR ======");
         System.out.println("   " + Hero.header());
-        heroList.addAll(factory.readAll(factory.warrior));
         List<Hero> warrior = factory.readAll(factory.paladin);
         for (Hero hero : warrior) {
             System.out.printf("%3d%s\n", index, hero);
@@ -90,7 +80,6 @@ public class LegendsGame extends RPGGame {
 
         System.out.println("====== SORCERER ======");
         System.out.println("   " + Hero.header());
-        heroList.addAll(factory.readAll(factory.sorcerer));
         List<Hero> sorcerer = factory.readAll(factory.paladin);
         for (Hero hero : sorcerer) {
             System.out.printf("%3d%s\n", index, hero);
@@ -103,20 +92,23 @@ public class LegendsGame extends RPGGame {
             System.out.println("\nInput number to choose your legend: (press Q to stop choosing)");
             id = scanner.next();
             if (!id.equals("Q") && !id.equals("q") && Integer.parseInt(id) >= 0 && Integer.parseInt(id) < heroList.size()) {
-                playerControllerList.add(
-                        new PlayerControllerImpl(new PlayerView(), new PlayerModel(heroList.get(Integer.parseInt(id)))));
-                showTeam();
+                teamController.addHero(heroList.get(Integer.parseInt(id) - 1));
+                teamController.showTeam();
             }
-        } while (!id.equals("Q") && !id.equals("q") || playerControllerList.size() == 0);
+        } while (!id.equals("Q") && !id.equals("q") || teamController.size() == 0);
+    }
+
+    public MarketController getMarketController() {
+        return marketController;
     }
 
     @Override
     public void start() {
-        System.out.println(Font.WELCOM);
-        System.out.println(Font.INSTRUCTION);
-        // wait for 3 seconds
+        System.out.println(text.WELCOM);
+        System.out.println(text.INSTRUCTION);
+        // wait for 2 seconds
         try {
-            TimeUnit.SECONDS.sleep(3);
+            TimeUnit.SECONDS.sleep(2);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

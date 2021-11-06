@@ -1,21 +1,37 @@
 package controller;
 
+import bean.Armor;
+import bean.Potion;
+import bean.Spell;
+import bean.Weapon;
+
+import java.util.List;
+
 public interface MarketController {
-    void init();
 
-    void buyArmor(int index);
+    Armor buyArmor(int index);
 
-    void buyWeapon(int index);
+    Weapon buyWeapon(int index);
 
-    void buyPotion(int index);
+    Potion buyPotion(int index);
 
-    void buySpell(int index);
+    Spell buySpell(int index);
 
-    void getArmorList();
+    void showAll();
 
-    void getWeaponList();
+    void showArmorList();
 
-    void getPotionList();
+    void showWeaponList();
 
-    void getSpellList();
+    void showPotionList();
+
+    void showSpellList();
+
+    List<Armor> getArmorList();
+
+    List<Weapon> getWeaponList();
+
+    List<Potion> getPotionList();
+
+    List<Spell> getSpellList();
 }

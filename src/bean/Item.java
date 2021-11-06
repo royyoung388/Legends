@@ -2,7 +2,7 @@ package bean;
 
 import interfaces.Merchantable;
 
-public class Item implements Merchantable {
+public abstract class Item implements Merchantable {
     private final String name;
     private final int cost;
     private final int level;

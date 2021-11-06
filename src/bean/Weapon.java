@@ -26,6 +26,10 @@ public class Weapon extends Item implements Attackable {
         return hands;
     }
 
+    public static String header() {
+        return String.format("%20s%10s%10s%10s%10s", "Name", "Cost", "Level", "Damage", "Hands");
+    }
+
     @Override
     public void attack(Changeable opponent) {
 

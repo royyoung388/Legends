@@ -1,6 +1,10 @@
 package model;
 
 import bean.*;
+import factory.ArmorFactory;
+import factory.PotionFactory;
+import factory.SpellFactory;
+import factory.WeaponFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,14 +16,10 @@ public class MarketModel {
     private List<Spell> spellList;
 
     public MarketModel() {
-        armorList = new ArrayList<>();
-        weaponList = new ArrayList<>();
-        potionList = new ArrayList<>();
-        spellList = new ArrayList<>();
-    }
-
-    public void init() {
-
+        armorList = new ArmorFactory().randomChoose(5);
+        weaponList = new WeaponFactory().randomChoose(5);
+        potionList = new PotionFactory().randomChoose(3);
+        spellList = new SpellFactory().randomChoose(1);
     }
 
     public List<Armor> getArmorList() {
@@ -36,5 +36,9 @@ public class MarketModel {
 
     public List<Spell> getSpellList() {
         return spellList;
+    }
+
+    public void buy(List items,int index) {
+        items.remove(index);
     }
 }
