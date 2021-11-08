@@ -1,9 +1,9 @@
 package state;
 
 import controller.BoardController;
-import text.text;
 import game.RPGGame;
 import model.Marker;
+import text.Text;
 import utils.Dice;
 import utils.LegendMarker;
 
@@ -29,13 +29,13 @@ public class WalkState extends BaseState {
         if (marker != null) {
             switch (marker.getMark()) {
                 // market cell
-                case LegendMarker.MARKET -> context.setState(new MarketState());
+                case LegendMarker.MARKET -> context.addState(new MarketState());
                 // common cell
                 case "" -> {
-                    // 10% probability to encounter a monster
+                    // 20% probability to encounter a monster
                     int prob = Dice.roll(10);
-                    if (prob < 1)
-                        context.setState(new FightState());
+                    if (prob < 2)
+                        context.addState(new FightState());
                 }
             }
         }
@@ -43,7 +43,7 @@ public class WalkState extends BaseState {
 
     @Override
     public void showPrompt(Context context) {
-        System.out.println(text.WALK_CONTROL);
+        System.out.println(Text.WALK_CONTROL);
         context.getRpgGame().getBoardController().show();
         System.out.println("\nInput your action:");
     }

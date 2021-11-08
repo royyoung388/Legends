@@ -1,7 +1,7 @@
 package text;
 
-public class text {
-    public static String WELCOM = """
+public class Text {
+    public static final String WELCOM = """
                         
             ██     ██ ███████ ██       ██████  ██████  ███    ███ ███████    \s
             ██     ██ ██      ██      ██      ██    ██ ████  ████ ██         \s
@@ -23,31 +23,29 @@ public class text {
                                                                              \s
             """;
 
-    public static String INSTRUCTION = """
+    public static final String INSTRUCTION = """
             ======================================================
             This is a RPG game.
             Choose your team, kill monsters, and become LEGENDS!
             =======================================================
-            
+                        
             """;
 
-    public static String WALK_CONTROL = """
+    public static final String WALK_CONTROL = """
             ------------------------------------------
             | CONTROL |                               |
             ------------------------------------------
             | W A S D | move                          |
             ------------------------------------------
-            |    I    | Show your legend's information|
-            ------------------------------------------
-            |    E    | Show your Items               |
+            |    I    | Show information and items    |
             ------------------------------------------
             |    M    | Show the map                  |
             ------------------------------------------
             |    Q    | Quit the game                 |
             ------------------------------------------""";
 
-    public static String MARKET_TITLE = """
-            
+    public static final String MARKET_TITLE = """
+                        
               __  __            _        _  \s
              |  \\/  |          | |      | | \s
              | \\  / | __ _ _ __| | _____| |_\s
@@ -58,7 +56,7 @@ public class text {
                                             \s
             """;
 
-    public static String MARKET_TYPE = """
+    public static final String MARKET_TYPE = """
             ++++++++++++++++++++++++++++++
             1. Weapon : Use weapon to strengthen your hero.
             2. Armor  : Use armor to reduce the damage.
@@ -70,4 +68,49 @@ public class text {
             0. Quit
             ++++++++++++++++++++++++++++++
             """;
+
+    public static final String FIGHT = """
+                        
+              ______ _       _     _  \s
+             |  ____(_)     | |   | | \s
+             | |__   _  __ _| |__ | |_\s
+             |  __| | |/ _` | '_ \\| __|
+             | |    | | (_| | | | | |_\s
+             |_|    |_|\\__, |_| |_|\\__|
+                        __/ |         \s
+                       |___/          \s
+                        
+            """;
+
+    public static final String THANKS = """
+                        
+              _______ _                 _        \s
+             |__   __| |               | |       \s
+                | |  | |__   __ _ _ __ | | _____ \s
+                | |  | '_ \\ / _` | '_ \\| |/ / __|\s
+                | |  | | | | (_| | | | |   <\\__ \\\s
+               _|_|  |_| |_|\\__,_|_| |_|_|\\_\\___/\s
+              / _|                               \s
+             | |_ ___  _ __                      \s
+             |  _/ _ \\| '__|                     \s
+             | || (_) | |                        \s
+             |_| \\___/|_|         _              \s
+                   | |           (_)             \s
+              _ __ | | __ _ _   _ _ _ __   __ _  \s
+             | '_ \\| |/ _` | | | | | '_ \\ / _` | \s
+             | |_) | | (_| | |_| | | | | | (_| | \s
+             | .__/|_|\\__,_|\\__, |_|_| |_|\\__, | \s
+             | |             __/ |         __/ | \s
+             |_|            |___/         |___/  \s
+            """;
+
+    public static final String FIGHT_WIN = """
+            ***************************************
+            ***************** WIN *****************
+            ***************************************""";
+
+    public static final String FIGHT_LOSE = """
+            ***************************************
+            **************** LOSE *****************
+            ***************************************""";
 }

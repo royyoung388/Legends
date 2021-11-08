@@ -1,14 +1,17 @@
 package controller;
 
 import bean.*;
+import bean.hero.Hero;
+import game.Config;
+import view.HeroView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class TeamControllerImpl implements TeamController {
+
     private int money;
-    private List<Hero> heroList;
+    private List<HeroController> heroList;
     private Backpack backpack;
 
     public TeamControllerImpl() {
@@ -19,14 +22,16 @@ public class TeamControllerImpl implements TeamController {
 
     @Override
     public void addHero(Hero hero) {
+        hero = hero.clone();
         money += hero.getMoney();
-        hero.setMoney(money);
-        heroList.add(hero);
+        heroList.add(new HeroControllerImpl(hero, new HeroView()));
     }
 
     @Override
     public void addHeroList(List<Hero> heroList) {
-        this.heroList.addAll(heroList);
+        for (Hero hero : heroList) {
+            addHero(hero);
+        }
     }
 
     @Override
@@ -40,12 +45,57 @@ public class TeamControllerImpl implements TeamController {
     }
 
     @Override
+    public void setMoney(int money) {
+        this.money = money;
+    }
+
+    @Override
+    public List<Weapon> getWeaponList() {
+        return backpack.getWeaponList();
+    }
+
+    @Override
+    public List<Armor> getArmorList() {
+        return backpack.getArmorList();
+    }
+
+    @Override
+    public List<Potion> getPotionList() {
+        return backpack.getPotionList();
+    }
+
+    @Override
+    public List<Spell> getSpellList() {
+        return backpack.getSpellList();
+    }
+
+    @Override
+    public void gainMoney(int money) {
+        this.money += money;
+        for (HeroController heroController : heroList) {
+            heroController.gainMoney(money);
+        }
+    }
+
+    @Override
+    public void usePotion(HeroController heroController, int index) {
+        heroController.usePotion(getPotionList().remove(index));
+    }
+
+    @Override
+    public int useSpell(HeroController heroController, CharacterController enemy, Spell spell) {
+        return heroController.useSpell(spell, enemy);
+    }
+
+
+    @Override
     public void buyArmor(Armor armor) {
         backpack.addArmor(armor);
     }
 
     @Override
     public void buyWeapon(Weapon weapon) {
+        money -= weapon.getCost();
         backpack.addWeapon(weapon);
     }
 
@@ -60,14 +110,19 @@ public class TeamControllerImpl implements TeamController {
     }
 
     @Override
-    public Hero getHero() {
-        return null;
+    public HeroController getHeroController(int index) {
+        return heroList.get(index);
+    }
+
+    @Override
+    public List<HeroController> getHeroControllerList() {
+        return heroList;
     }
 
     @Override
     public void showTeam() {
         System.out.println("===== Your Team =====");
-        System.out.println("   " + Hero.header());
+        System.out.println("   " + HeroView.header());
         for (int i = 0; i < heroList.size(); i++) {
             System.out.printf("%3d%s\n", i + 1, heroList.get(i));
         }
@@ -75,55 +130,48 @@ public class TeamControllerImpl implements TeamController {
     }
 
     @Override
-    public void showEquipment() {
-
+    public void showItem() {
+        System.out.println("============== Your Items ================");
+        showWeaponList();
+        showArmorList();
+        showPotionList();
+        showSpellList();
+        System.out.println("Team Money: " + money);
     }
 
     @Override
-    public void showItem() {
-        System.out.println("============== Your Items ================");
-        showWeaponList(backpack.getWeaponList());
-        showArmorList(backpack.getArmorList());
-        showPotionList(backpack.getPotionList());
-        showSpellList(backpack.getSpellList());
-        // wait for 2 seconds
-        try {
-            TimeUnit.SECONDS.sleep(2);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+    public void showArmorList() {
+        System.out.println("=========== ARMOR " + Config.ARMOR_ID + " ==============");
+        System.out.println("   " + Armor.header());
+        for (int i = 0; i < backpack.getArmorList().size(); i++) {
+            System.out.printf("%3d%s\n", i + 1, backpack.getArmorList().get(i));
         }
     }
 
-    private void showArmorList(List<Armor> armorList) {
-        System.out.println("=========== ARMOR ==============");
-        System.out.println("  " + Armor.header());
-        for (int i = 1; i <= armorList.size(); i++) {
-            System.out.printf("%3d%s\n", i, armorList.get(i));
+    @Override
+    public void showWeaponList() {
+        System.out.println("=========== WEAPON " + Config.WEAPON_ID + " ==============");
+        System.out.println("   " + Weapon.header());
+        for (int i = 0; i < backpack.getWeaponList().size(); i++) {
+            System.out.printf("%3d%s\n", i + 1, backpack.getWeaponList().get(i));
         }
     }
 
-    private void showWeaponList(List<Weapon> weaponList) {
-        System.out.println("=========== WEAPON ==============");
-        System.out.println("  " + Weapon.header());
-        for (int i = 1; i <= weaponList.size(); i++) {
-            System.out.printf("%3d%s\n", i, weaponList.get(i));
+    @Override
+    public void showPotionList() {
+        System.out.println("=========== POTION " + Config.POTION_ID + " ==============");
+        System.out.println("   " + Potion.header());
+        for (int i = 0; i < backpack.getPotionList().size(); i++) {
+            System.out.printf("%3d%s\n", i + 1, backpack.getPotionList().get(i));
         }
     }
 
-    private void showPotionList(List<Potion> potionList) {
-        System.out.println("=========== POTION ==============");
-        System.out.println("  " + Potion.header());
-        for (int i = 1; i <= potionList.size(); i++) {
-            System.out.printf("%3d%s\n", i, potionList.get(i));
-        }
-    }
-
-
-    private void showSpellList(List<Spell> spellList) {
-        System.out.println("=========== SPELL ==============");
-        System.out.println("  " + Spell.header());
-        for (int i = 1; i <= spellList.size(); i++) {
-            System.out.printf("%3d%s\n", i, spellList.get(i));
+    @Override
+    public void showSpellList() {
+        System.out.println("=========== SPELL " + Config.SPELL_ID + " ==============");
+        System.out.println("   " + Spell.header());
+        for (int i = 0; i < backpack.getSpellList().size(); i++) {
+            System.out.printf("%3d%s\n", i + 1, backpack.getSpellList().get(i));
         }
     }
 }

@@ -2,7 +2,7 @@ package model;
 
 import bean.Armor;
 import bean.Backpack;
-import bean.Hero;
+import bean.hero.Hero;
 import bean.Weapon;
 
 public class PlayerModel {

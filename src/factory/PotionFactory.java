@@ -1,6 +1,5 @@
 package factory;
 
-import bean.Armor;
 import bean.Potion;
 import utils.Dice;
 import utils.FileUtils;
@@ -29,6 +28,7 @@ public class PotionFactory {
 
         return potions;
     }
+
     public List<Potion> randomChoose(int count) {
         List<Potion> all = readAll();
         List<Potion> choice = new ArrayList<>();

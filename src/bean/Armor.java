@@ -1,9 +1,6 @@
 package bean;
 
-import interfaces.Equipable;
-import interfaces.Merchantable;
-
-public class Armor extends Item implements Equipable {
+public class Armor extends Item {
     private final int reduction;
 
     public Armor(String[] args) {
@@ -21,11 +18,6 @@ public class Armor extends Item implements Equipable {
 
     public static String header() {
         return String.format("%20s%10s%10s%10s", "Name", "Cost", "Level", "Reduction");
-    }
-
-    @Override
-    public void equip() {
-
     }
 
     @Override

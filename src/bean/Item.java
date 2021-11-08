@@ -2,7 +2,7 @@ package bean;
 
 import interfaces.Merchantable;
 
-public abstract class Item implements Merchantable {
+public abstract class Item implements Merchantable, Cloneable {
     private final String name;
     private final int cost;
     private final int level;
@@ -33,5 +33,16 @@ public abstract class Item implements Merchantable {
     @Override
     public int sellPrice() {
         return cost / 2;
+    }
+
+    @Override
+    public Item clone() {
+        try {
+            Item clone = (Item) super.clone();
+            // TODO: copy mutable state here, so the clone can't change the internals of the original
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 }

@@ -43,6 +43,26 @@ public class Character implements Changeable {
         return dodge;
     }
 
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
+
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
+
+    public void setDefense(int defense) {
+        this.defense = defense;
+    }
+
+    public void setDodge(int dodge) {
+        this.dodge = dodge;
+    }
+
     public static String header() {
         return String.format("%20s%10s%10s%10s%10s%10s", "Name", "HP", "Level", "Damage", "Defense", "Dodge");
     }

@@ -1,13 +1,14 @@
 package game;
 
-import bean.Hero;
+import bean.hero.Hero;
 import controller.MarketController;
 import controller.MarketControllerImpl;
 import factory.HeroFactory;
 import model.Marker;
 import model.MarketModel;
+import state.FightState;
 import state.WalkState;
-import text.text;
+import text.Text;
 import utils.Dice;
 import utils.LegendMarker;
 import view.MarketView;
@@ -20,6 +21,8 @@ import java.util.concurrent.TimeUnit;
 public class LegendsGame extends RPGGame {
     private Scanner scanner;
     private MarketController marketController;
+    // record the game status. 0 for quit.
+    private int gameFlag = 1;
 
     public LegendsGame() {
         this(8, 8);
@@ -47,9 +50,9 @@ public class LegendsGame extends RPGGame {
         boardController.setPlayer(0, 0);
 
         // no block for player
-        if (markers[0][1].getMark().isEmpty()
-                && markers[1][0].getMark().isEmpty()) {
-            markers[0][1].setMark("");
+        if (markers[0][1].getMark().equals(LegendMarker.BLOCK)
+                && markers[1][0].getMark().equals(LegendMarker.BLOCK)) {
+            markers[0][1].setMark(LegendMarker.COMMON);
         }
 
         boardController.fill(markers);
@@ -71,7 +74,7 @@ public class LegendsGame extends RPGGame {
 
         System.out.println("====== WARRIOR ======");
         System.out.println("   " + Hero.header());
-        List<Hero> warrior = factory.readAll(factory.paladin);
+        List<Hero> warrior = factory.readAll(factory.warrior);
         for (Hero hero : warrior) {
             System.out.printf("%3d%s\n", index, hero);
             index++;
@@ -80,7 +83,7 @@ public class LegendsGame extends RPGGame {
 
         System.out.println("====== SORCERER ======");
         System.out.println("   " + Hero.header());
-        List<Hero> sorcerer = factory.readAll(factory.paladin);
+        List<Hero> sorcerer = factory.readAll(factory.sorcerer);
         for (Hero hero : sorcerer) {
             System.out.printf("%3d%s\n", index, hero);
             index++;
@@ -89,13 +92,13 @@ public class LegendsGame extends RPGGame {
 
         String id = null;
         do {
-            System.out.println("\nInput number to choose your legend: (press Q to stop choosing)");
+            System.out.println("\nInput number to choose your legend: (press 0 to stop choosing)");
             id = scanner.next();
-            if (!id.equals("Q") && !id.equals("q") && Integer.parseInt(id) >= 0 && Integer.parseInt(id) < heroList.size()) {
+            if (Integer.parseInt(id) > 0 && Integer.parseInt(id) < heroList.size()) {
                 teamController.addHero(heroList.get(Integer.parseInt(id) - 1));
                 teamController.showTeam();
             }
-        } while (!id.equals("Q") && !id.equals("q") || teamController.size() == 0);
+        } while (!id.equals("0") || teamController.size() == 0);
     }
 
     public MarketController getMarketController() {
@@ -104,8 +107,8 @@ public class LegendsGame extends RPGGame {
 
     @Override
     public void start() {
-        System.out.println(text.WELCOM);
-        System.out.println(text.INSTRUCTION);
+        System.out.println(Text.WELCOM);
+        System.out.println(Text.INSTRUCTION);
         // wait for 2 seconds
         try {
             TimeUnit.SECONDS.sleep(2);
@@ -114,11 +117,13 @@ public class LegendsGame extends RPGGame {
         }
 
         chooseHero();
-        context.setState(new WalkState());
+        context.addState(new WalkState());
 
         while (!isEnd()) {
             context.getState().showPrompt(context);
-            String action = scanner.next();
+            String action = null;
+            if (!(context.getState() instanceof FightState))
+                action = scanner.nextLine();
             context.getState().doAction(context, action);
         }
     }
@@ -130,11 +135,12 @@ public class LegendsGame extends RPGGame {
 
     @Override
     protected boolean isEnd() {
-        return false;
+        return gameFlag == 0;
     }
 
     @Override
     public void quit() {
-
+        gameFlag = 0;
+        System.out.println(Text.THANKS);
     }
 }

@@ -1,7 +1,6 @@
 package bean;
 
 import interfaces.Castable;
-import interfaces.Changeable;
 
 public class Spell extends Item implements Castable {
     public static final int ICE = 0;
@@ -19,7 +18,8 @@ public class Spell extends Item implements Castable {
     }
 
     public Spell(int type, String name, int cost, int level, int damage, int mana) {
-        super(name, cost, level);
+//        super(name, cost, level);
+        super(name, cost, 1);
         this.type = type;
         this.damage = damage;
         this.mana = mana;
@@ -38,12 +38,17 @@ public class Spell extends Item implements Castable {
     }
 
     public static String header() {
-        return String.format("%20s%10s%10s%10s%10s%s", "Name", "Cost", "Level", "Type", "Damage", "ManaCost");
+        return String.format("%20s%10s%10s%10s%10s%10s", "Name", "Cost", "Level", "Type", "Damage", "ManaCost");
     }
 
     @Override
-    public void cast(Changeable opponent) {
+    public void cast(Character enemy) {
+        switch (type) {
+            case ICE -> enemy.setDamage((int) Math.ceil(0.9 * enemy.getDamage()));
+            case FIRE -> enemy.setDefense((int) Math.ceil(0.9 * enemy.getDefense()));
+            case LIGHTNING -> enemy.setDodge((int) Math.ceil(0.9 * enemy.getDodge()));
 
+        }
     }
 
     @Override

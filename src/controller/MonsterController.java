@@ -1,11 +1,8 @@
 package controller;
 
-import bean.Spell;
+import bean.monster.Monster;
 
-public interface MonsterController {
-    void damageDealt(int damage);
-
-    void spellDealt(Spell spell);
-
-    void isDied();
+public interface MonsterController extends CharacterController {
+    @Override
+    Monster getCharacter();
 }

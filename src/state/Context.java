@@ -2,21 +2,27 @@ package state;
 
 import game.RPGGame;
 
+import java.util.Stack;
+
 public class Context {
-    private State state;
+    private Stack<State> state;
     private RPGGame rpgGame;
 
     public Context(RPGGame rpgGame) {
         this.rpgGame = rpgGame;
-        state = null;
+        state = new Stack<>();
     }
 
-    public void setState(State state) {
-        this.state = state;
+    public void addState(State state) {
+        this.state.add(state);
+    }
+
+    public void popState() {
+        this.state.pop();
     }
 
     public State getState() {
-        return state;
+        return state.peek();
     }
 
     public void setRpgGame(RPGGame rpgGame) {

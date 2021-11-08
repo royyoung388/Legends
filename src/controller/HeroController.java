@@ -1,27 +1,24 @@
 package controller;
 
-import bean.Armor;
-import bean.Potion;
-import bean.Spell;
-import bean.Weapon;
+import bean.*;
+import bean.hero.Hero;
 
-public interface HeroController {
+public interface HeroController extends CharacterController {
 
+    @Override
+    Hero getCharacter();
 
-    int attack();
+    void gainExp(int exp);
 
-    void damageDealt(int damage);
+    int hpRegain();
 
-    void gainExp();
+    int mpRegain();
 
-    void levelUp();
+    boolean levelUp();
 
-    void gainMoney();
+    void gainMoney(int money);
 
-    void getMoney();
-
-
-    void useSpell(Spell spell);
+    int useSpell(Spell spell, CharacterController enemy);
 
     void usePotion(Potion potion);
 

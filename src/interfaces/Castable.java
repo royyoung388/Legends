@@ -1,5 +1,7 @@
 package interfaces;
 
+import bean.Character;
+
 public interface Castable {
-    void cast(Changeable opponent);
+    void cast(Character opponent);
 }

@@ -1,9 +1,11 @@
 package factory;
 
-import bean.Hero;
+import bean.hero.Hero;
+import bean.hero.Paladin;
+import bean.hero.Sorcerer;
+import bean.hero.Warrior;
 import utils.FileUtils;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -19,13 +21,21 @@ public class HeroFactory {
 
     public List<Hero> readAll(String path) {
         List<Hero> heroes = new ArrayList<>();
+        int type = 0;
+
 
         Iterator<String> iterator = FileUtils.readFile(path).iterator();
         // skip first line
         iterator.next();
         while (iterator.hasNext()) {
             String[] array = iterator.next().split("[\s\t]+");
-            heroes.add(new Hero(array));
+            if (path.equals(paladin)) {
+                heroes.add(new Paladin(array));
+            } else if (path.equals(warrior)) {
+                heroes.add(new Warrior(array));
+            } else if (path.equals(sorcerer)) {
+                heroes.add(new Sorcerer(array));
+            }
         }
 
         return heroes;

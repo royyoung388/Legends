@@ -23,36 +23,29 @@ public class MarketControllerImpl implements MarketController {
     public Armor buyArmor(int index) {
         if (index < 0 || index >= marketModel.getArmorList().size())
             return null;
-        Armor armor = marketModel.getArmorList().get(index);
-        marketModel.buy(marketModel.getArmorList(), index);
-        return armor;
+        return (Armor) marketModel.buy(marketModel.getArmorList(), index);
     }
 
     @Override
     public Weapon buyWeapon(int index) {
         if (index < 0 || index >= marketModel.getWeaponList().size())
             return null;
-        Weapon weapon = marketModel.getWeaponList().get(index);
-        marketModel.buy(marketModel.getWeaponList(), index);
-        return weapon;
+        return (Weapon) marketModel.buy(marketModel.getWeaponList(), index);
     }
 
     @Override
     public Potion buyPotion(int index) {
         if (index < 0 || index >= marketModel.getPotionList().size())
             return null;
-        Potion potion = marketModel.getPotionList().get(index);
-        marketModel.buy(marketModel.getPotionList(), index);
-        return potion;
+        return (Potion) marketModel.buy(marketModel.getPotionList(), index);
     }
 
     @Override
     public Spell buySpell(int index) {
         if (index < 0 || index >= marketModel.getSpellList().size())
             return null;
-        Spell spell = marketModel.getSpellList().get(index);
-        marketModel.buy(marketModel.getSpellList(), index);
-        return spell;
+        return (Spell) marketModel.buy(marketModel.getSpellList(), index);
+
     }
 
     @Override

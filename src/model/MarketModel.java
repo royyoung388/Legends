@@ -6,7 +6,6 @@ import factory.PotionFactory;
 import factory.SpellFactory;
 import factory.WeaponFactory;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MarketModel {
@@ -38,7 +37,7 @@ public class MarketModel {
         return spellList;
     }
 
-    public void buy(List items,int index) {
-        items.remove(index);
+    public Item buy(List<? extends Item> items,int index) {
+        return (Item) items.remove(index);
     }
 }
