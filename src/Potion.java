@@ -27,7 +27,7 @@ public class Potion extends Item implements Usable {
 //        super(name, cost, level);
         super(name, cost, 1);
         this.increase = increase;
-        this.attribute = attribute.split("[/\s+]");
+        this.attribute = attribute.split("[\\s+]");
     }
 
     public int getIncrease() {

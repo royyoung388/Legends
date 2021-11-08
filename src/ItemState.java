@@ -11,7 +11,7 @@ public class ItemState extends BaseState {
         action = action.toUpperCase();
         LegendsGame game = (LegendsGame) context.getRpgGame();
 
-        String[] s = action.split("[\s\t]+");
+        String[] s = action.split("[\\s\\t]+");
 
         if (s[0].equals("0")) {
             context.popState();

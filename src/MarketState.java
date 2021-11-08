@@ -8,7 +8,7 @@ public class MarketState extends BaseState {
         super.doAction(context, action);
 
         action = action.toUpperCase();
-        String[] strings = action.split("\s+");
+        String[] strings = action.split("\\s+");
         LegendsGame legendsGame = (LegendsGame) context.getRpgGame();
         MarketController marketController = legendsGame.getMarketController();
         TeamController teamController = legendsGame.getTeamController();

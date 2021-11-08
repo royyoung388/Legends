@@ -23,7 +23,7 @@ public class MonsterFactory {
         // skip first line
         iterator.next();
         while (iterator.hasNext()) {
-            String[] array = iterator.next().split("[\s\t]+");
+            String[] array = iterator.next().split("[\\s\\t]+");
             if (path.equals(dragons)) {
                 monsters.add(new Dragon(array));
             } else if (path.equals(exoskeleton)) {

@@ -19,7 +19,7 @@ public class PotionFactory {
         // skip first line
         iterator.next();
         while (iterator.hasNext()) {
-            String[] array = iterator.next().split("[\s\t]+");
+            String[] array = iterator.next().split("[\\s\\t]+");
             potions.add(new Potion(array));
         }
 
