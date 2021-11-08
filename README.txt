@@ -1,3 +1,6 @@
+Pleas use java 14 or higher.
+If your cmd doesn't support colorful text, please modify the LegendMarker.java file.
+
 # Design Pattern
 ## MVC pattern
     View:
