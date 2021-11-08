@@ -7,7 +7,7 @@ public class SellState extends BaseState {
     public void doAction(Context context, String action) {
         super.doAction(context, action);
         action = action.toUpperCase();
-        String[] strings = action.split("\\s+");g
+        String[] strings = action.split("\\s+");
         TeamController teamController = context.getRpgGame().getTeamController();
 
         if (strings[0].equals("0")) {
