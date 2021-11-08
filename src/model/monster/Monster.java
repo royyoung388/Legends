@@ -1,8 +1,8 @@
-package bean.monster;
+package model.monster;
 
-import bean.Character;
+import model.Character;
 
-public class Monster extends Character {
+public abstract class Monster extends Character {
     public static final int DRAGON = 0;
     public static final int SPIRIT = 1;
     public static final int EXOSKELETON = 2;

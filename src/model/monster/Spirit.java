@@ -1,4 +1,4 @@
-package bean.monster;
+package model.monster;
 
 public class Spirit extends Monster {
     public Spirit(String[] args) {

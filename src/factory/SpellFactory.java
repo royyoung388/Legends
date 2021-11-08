@@ -1,6 +1,6 @@
 package factory;
 
-import bean.Spell;
+import model.Item.Spell;
 import utils.Dice;
 import utils.FileUtils;
 

@@ -1,6 +1,6 @@
-package bean.hero;
+package model.hero;
 
-import bean.Character;
+import model.Character;
 
 public abstract class Hero extends Character implements Cloneable {
     public static final int PALADIN = 0;

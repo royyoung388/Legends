@@ -1,8 +1,8 @@
 package view;
 
-import bean.Armor;
-import bean.hero.Hero;
-import bean.Weapon;
+import model.Item.Armor;
+import model.hero.Hero;
+import model.Item.Weapon;
 
 public class HeroView {
 

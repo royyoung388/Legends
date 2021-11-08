@@ -56,6 +56,20 @@ public class Text {
                                             \s
             """;
 
+    public static final String SELL_TYPE = """
+            ++++++++++++++++++++++++++++++
+            1. Weapon : Use weapon to strengthen your hero.
+            2. Armor  : Use armor to reduce the damage.
+            3. Potion : DISPOSABLE. Use potion to increase your attributes.
+            4. Spell  : Use spell to affect your enemy.
+                        FIRE : Reduce the defense of the enemy.
+                        ICE  : Reduce the damage of the enemy.
+                        Lightning: Reduce the dodge chance of the enemy.
+            0. Quit
+            ++++++++++++++++++++++++++++++
+            """;
+
+
     public static final String MARKET_TYPE = """
             ++++++++++++++++++++++++++++++
             1. Weapon : Use weapon to strengthen your hero.
@@ -65,6 +79,7 @@ public class Text {
                         FIRE : Reduce the defense of the enemy.
                         ICE  : Reduce the damage of the enemy.
                         Lightning: Reduce the dodge chance of the enemy.
+            5. Sell   : Sell your items.
             0. Quit
             ++++++++++++++++++++++++++++++
             """;

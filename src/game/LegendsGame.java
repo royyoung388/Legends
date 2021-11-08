@@ -1,10 +1,10 @@
 package game;
 
-import bean.hero.Hero;
+import model.hero.Hero;
 import controller.MarketController;
 import controller.MarketControllerImpl;
 import factory.HeroFactory;
-import model.Marker;
+import model.board.Marker;
 import model.MarketModel;
 import state.FightState;
 import state.WalkState;

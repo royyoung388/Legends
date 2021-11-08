@@ -1,7 +1,8 @@
-package bean;
+package model.Item;
 
 import interfaces.Changeable;
 import interfaces.Usable;
+import model.Item.Item;
 
 import java.util.HashMap;
 import java.util.Map;

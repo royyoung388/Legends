@@ -1,16 +1,14 @@
 package state;
 
-import bean.Armor;
-import bean.Potion;
-import bean.Spell;
-import bean.Weapon;
+import model.Item.Armor;
+import model.Item.Potion;
+import model.Item.Spell;
+import model.Item.Weapon;
 import controller.MarketController;
 import controller.TeamController;
 import game.Config;
 import game.LegendsGame;
 import text.Text;
-
-import java.util.concurrent.TimeUnit;
 
 public class MarketState extends BaseState {
     @Override
@@ -23,10 +21,13 @@ public class MarketState extends BaseState {
         MarketController marketController = legendsGame.getMarketController();
         TeamController teamController = legendsGame.getTeamController();
 
-        if (strings[0].equals("0")) {
+        if (Integer.parseInt(strings[0]) == Config.QUIT) {
             context.popState();
             return;
         }
+
+        if (Integer.parseInt(strings[0]) == Config.SELL)
+            context.addState(new SellState());
 
         if (strings.length < 2)
             return;
@@ -57,9 +58,7 @@ public class MarketState extends BaseState {
                     legendsGame.getTeamController().buySpell(spell);
                 }
             }
-            case 0 -> {
-                context.popState();
-            }
+            case 0 -> context.popState();
         }
     }
 
@@ -77,6 +76,6 @@ public class MarketState extends BaseState {
         LegendsGame game = (LegendsGame) context.getRpgGame();
         game.getMarketController().showAll();
         System.out.println("Your Team Money: " + game.getTeamController().getMoney());
-        System.out.println("Input TYPE ID to choose the item: (input 0 to quit)");
+        System.out.println("Input TYPE ID to choose the item: (Input 5 to sell item. Input 0 to quit)");
     }
 }

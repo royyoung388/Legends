@@ -1,4 +1,4 @@
-package bean;
+package model.Item;
 
 public class Armor extends Item {
     private final int reduction;

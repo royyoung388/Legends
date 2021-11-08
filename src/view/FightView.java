@@ -1,6 +1,6 @@
 package view;
 
-import bean.Character;
+import model.Character;
 import controller.CharacterController;
 import controller.MonsterController;
 import controller.TeamController;

@@ -1,6 +1,6 @@
 package controller;
 
-import bean.Character;
+import model.Character;
 import interfaces.Castable;
 
 public interface CharacterController {

@@ -1,10 +1,10 @@
 package model;
 
-import bean.*;
 import factory.ArmorFactory;
 import factory.PotionFactory;
 import factory.SpellFactory;
 import factory.WeaponFactory;
+import model.Item.*;
 
 import java.util.List;
 
@@ -37,7 +37,7 @@ public class MarketModel {
         return spellList;
     }
 
-    public Item buy(List<? extends Item> items,int index) {
-        return (Item) items.remove(index);
+    public Item buy(List<? extends Item> items, int index) {
+        return items.remove(index);
     }
 }

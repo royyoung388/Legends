@@ -1,6 +1,6 @@
 package factory;
 
-import bean.Armor;
+import model.Item.Armor;
 import utils.Dice;
 import utils.FileUtils;
 

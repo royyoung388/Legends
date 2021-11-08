@@ -1,4 +1,4 @@
-package model;
+package model.board;
 
 /***
  * board.Board, made by cells.

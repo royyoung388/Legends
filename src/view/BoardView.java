@@ -1,6 +1,6 @@
 package view;
 
-import model.BoardModel;
+import model.board.BoardModel;
 
 public class BoardView {
     private int pRow, pColumn;

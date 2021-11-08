@@ -1,10 +1,10 @@
 package controller;
 
-import bean.Armor;
-import bean.Potion;
-import bean.Spell;
-import bean.Weapon;
-import bean.hero.Hero;
+import model.Item.Armor;
+import model.Item.Potion;
+import model.Item.Spell;
+import model.Item.Weapon;
+import model.hero.Hero;
 import utils.Dice;
 import view.HeroView;
 

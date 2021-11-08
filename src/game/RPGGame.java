@@ -4,12 +4,9 @@ import controller.BoardController;
 import controller.BoardControllerImpl;
 import controller.TeamController;
 import controller.TeamControllerImpl;
-import model.BoardModel;
+import model.board.BoardModel;
 import state.Context;
 import view.BoardView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public abstract class RPGGame {
     protected BoardController boardController;

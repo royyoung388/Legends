@@ -1,7 +1,8 @@
-package bean;
+package model.Item;
 
 import interfaces.Attackable;
 import interfaces.Changeable;
+import model.Item.Item;
 
 public class Weapon extends Item implements Attackable {
     private final int damage;

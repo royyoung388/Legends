@@ -1,6 +1,6 @@
 package controller;
 
-import model.Marker;
+import model.board.Marker;
 
 public interface BoardController {
     void fill(Marker[][] markers);

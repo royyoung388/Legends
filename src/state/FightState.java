@@ -1,6 +1,6 @@
 package state;
 
-import bean.monster.Monster;
+import model.monster.Monster;
 import controller.*;
 import factory.MonsterFactory;
 import text.Text;

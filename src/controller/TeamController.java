@@ -1,7 +1,10 @@
 package controller;
 
-import bean.*;
-import bean.hero.Hero;
+import model.Item.Armor;
+import model.Item.Potion;
+import model.Item.Spell;
+import model.Item.Weapon;
+import model.hero.Hero;
 
 import java.util.List;
 
@@ -38,6 +41,14 @@ public interface TeamController {
     void buyPotion(Potion potion);
 
     void buySpell(Spell spell);
+
+    void sellArmor(int index);
+
+    void sellWeapon(int index);
+
+    void sellPotion(int index);
+
+    void sellSpell(int index);
 
     HeroController getHeroController(int index);
 

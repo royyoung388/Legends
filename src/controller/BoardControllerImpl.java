@@ -1,7 +1,7 @@
 package controller;
 
-import model.BoardModel;
-import model.Marker;
+import model.board.BoardModel;
+import model.board.Marker;
 import utils.Dice;
 import utils.LegendMarker;
 import view.BoardView;

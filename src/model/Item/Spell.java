@@ -1,6 +1,8 @@
-package bean;
+package model.Item;
 
 import interfaces.Castable;
+import model.Character;
+import model.Item.Item;
 
 public class Spell extends Item implements Castable {
     public static final int ICE = 0;

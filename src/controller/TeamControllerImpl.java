@@ -1,7 +1,11 @@
 package controller;
 
-import bean.*;
-import bean.hero.Hero;
+import model.*;
+import model.Item.Armor;
+import model.Item.Potion;
+import model.Item.Spell;
+import model.Item.Weapon;
+import model.hero.Hero;
 import game.Config;
 import view.HeroView;
 
@@ -107,6 +111,30 @@ public class TeamControllerImpl implements TeamController {
     @Override
     public void buySpell(Spell spell) {
         backpack.addSpell(spell);
+    }
+
+    @Override
+    public void sellArmor(int index) {
+        Armor armor = getArmorList().remove(index);
+        money += armor.getCost() / 2;
+    }
+
+    @Override
+    public void sellWeapon(int index) {
+        Weapon weapon = getWeaponList().remove(index);
+        money += weapon.getCost() / 2;
+    }
+
+    @Override
+    public void sellPotion(int index) {
+        Potion potion = getPotionList().remove(index);
+        money += potion.getCost() / 2;
+    }
+
+    @Override
+    public void sellSpell(int index) {
+        Spell spell = getSpellList().remove(index);
+        money += spell.getCost() / 2;
     }
 
     @Override

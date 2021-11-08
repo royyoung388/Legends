@@ -1,8 +1,8 @@
-package bean;
+package model;
 
 import interfaces.Changeable;
 
-public class Character implements Changeable {
+public abstract class Character implements Changeable {
     private String name;
     private int level;
     private int hp;

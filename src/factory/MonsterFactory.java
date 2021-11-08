@@ -1,6 +1,9 @@
 package factory;
 
-import bean.monster.Monster;
+import model.monster.Dragon;
+import model.monster.Exoskeleton;
+import model.monster.Monster;
+import model.monster.Spirit;
 import utils.Dice;
 import utils.FileUtils;
 
@@ -21,20 +24,19 @@ public class MonsterFactory {
     public List<Monster> readAll(String path) {
         List<Monster> monsters = new ArrayList<>();
         int type = 0;
-        if (path.equals(dragons)) {
-            type = Monster.DRAGON;
-        } else if (path.equals(exoskeleton)) {
-            type = Monster.EXOSKELETON;
-        } else if (path.equals(spirit)) {
-            type = Monster.SPIRIT;
-        }
 
         Iterator<String> iterator = FileUtils.readFile(path).iterator();
         // skip first line
         iterator.next();
         while (iterator.hasNext()) {
             String[] array = iterator.next().split("[\s\t]+");
-            monsters.add(new Monster(type, array));
+            if (path.equals(dragons)) {
+                monsters.add(new Dragon(array));
+            } else if (path.equals(exoskeleton)) {
+                monsters.add(new Exoskeleton(array));
+            } else if (path.equals(spirit)) {
+                monsters.add(new Spirit(array));
+            }
         }
 
         return monsters;

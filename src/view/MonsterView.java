@@ -1,6 +1,6 @@
 package view;
 
-import bean.monster.Monster;
+import model.monster.Monster;
 
 public class MonsterView {
     public static String header() {

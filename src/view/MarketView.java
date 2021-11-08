@@ -1,9 +1,9 @@
 package view;
 
-import bean.Armor;
-import bean.Potion;
-import bean.Spell;
-import bean.Weapon;
+import model.Item.Armor;
+import model.Item.Potion;
+import model.Item.Spell;
+import model.Item.Weapon;
 import game.Config;
 
 import java.util.List;

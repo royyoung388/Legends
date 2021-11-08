@@ -1,4 +1,6 @@
-package model;
+package model.board;
+
+import model.board.Marker;
 
 /**
  * One cell on the board.

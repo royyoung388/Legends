@@ -1,4 +1,4 @@
-package bean.hero;
+package model.hero;
 
 public class Sorcerer extends Hero {
     public Sorcerer(String[] args) {

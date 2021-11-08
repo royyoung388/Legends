@@ -1,9 +1,9 @@
 package factory;
 
-import bean.hero.Hero;
-import bean.hero.Paladin;
-import bean.hero.Sorcerer;
-import bean.hero.Warrior;
+import model.hero.Hero;
+import model.hero.Paladin;
+import model.hero.Sorcerer;
+import model.hero.Warrior;
 import utils.FileUtils;
 
 import java.util.ArrayList;

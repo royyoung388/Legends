@@ -1,4 +1,4 @@
-package bean;
+package model.Item;
 
 import interfaces.Merchantable;
 

@@ -2,7 +2,7 @@ package state;
 
 import controller.BoardController;
 import game.RPGGame;
-import model.Marker;
+import model.board.Marker;
 import text.Text;
 import utils.Dice;
 import utils.LegendMarker;

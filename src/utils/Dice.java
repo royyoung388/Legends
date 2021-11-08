@@ -1,6 +1,6 @@
 package utils;
 
-import model.Marker;
+import model.board.Marker;
 
 import java.util.Random;
 
